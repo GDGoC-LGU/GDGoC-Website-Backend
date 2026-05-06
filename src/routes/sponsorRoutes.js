@@ -17,19 +17,19 @@ const router = Router();
 router.get('/', getPublicSponsors);
 
 // ── Admin ───────────────────────────────────────────────
-// GET /api/admin/sponsors
+// GET /api/sponsors/admin
 router.get('/admin', protect, getAllSponsors);
 
-// GET /api/admin/sponsors/:id
+// GET /api/sponsors/admin/:id
 router.get('/admin/:id', protect, getSponsorById);
 
-// POST /api/admin/sponsors
+// POST /api/sponsors/admin
 router.post('/admin', protect, uploadSponsor.single('logo'), handleMulterError, createSponsor);
 
-// PUT /api/admin/sponsors/:id
+// PUT /api/sponsors/admin/:id
 router.put('/admin/:id', protect, uploadSponsor.single('logo'), handleMulterError, updateSponsor);
 
-// DELETE /api/admin/sponsors/:id
+// DELETE /api/sponsors/admin/:id
 router.delete('/admin/:id', protect, deleteSponsor);
 
 export default router;
