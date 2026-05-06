@@ -39,9 +39,15 @@ export const uploadSponsor  = multer({ storage: createStorage('sponsors'),   fil
 // Helper: delete old image file from disk
 export const deleteFile = (filePath) => {
   if (!filePath) return;
-  const fullPath = path.join(__dirname, '../../', filePath);
+  // Ensure filePath is treated as relative. If it starts with a path separator
+  // (e.g. "/uploads/..."), strip leading separators so path.join does not drop
+  // the base directory.
+  const safePath = filePath.replace(/^[/\\]+/, '');
+  const fullPath = path.join(__dirname, '../../', safePath);
   fs.unlink(fullPath, (err) => {
-    if (err && err.code !== 'ENOENT') console.warn('Could not delete file:', fullPath);
+    if (err && err.code !== 'ENOENT') {
+      console.warn('Could not delete file:', fullPath);
+    }
   });
 };
 
