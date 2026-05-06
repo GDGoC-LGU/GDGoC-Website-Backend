@@ -18,22 +18,22 @@ const router = Router();
 router.get('/', getPublicEvents);
 
 // ── Admin ───────────────────────────────────────────────
-// GET /api/admin/events
+// GET /api/events/admin
 router.get('/admin', protect, getAllEvents);
 
-// GET /api/admin/events/:id
+// GET /api/events/admin/:id
 router.get('/admin/:id', protect, getEventById);
 
-// POST /api/admin/events
+// POST /api/events/admin
 router.post('/admin', protect, uploadEvent.single('image'), handleMulterError, createEvent);
 
-// PUT /api/admin/events/:id
+// PUT /api/events/admin/:id
 router.put('/admin/:id', protect, uploadEvent.single('image'), handleMulterError, updateEvent);
 
-// DELETE /api/admin/events/:id
+// DELETE /api/events/admin/:id
 router.delete('/admin/:id', protect, deleteEvent);
 
-// PATCH /api/admin/events/:id/toggle-publish
+// PATCH /api/events/admin/:id/toggle-publish
 router.patch('/admin/:id/toggle-publish', protect, togglePublish);
 
 export default router;
