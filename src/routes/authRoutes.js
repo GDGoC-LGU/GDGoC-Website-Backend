@@ -5,7 +5,7 @@ import { protect, superAdminOnly } from '../middleware/auth.js';
 const router = Router();
 
 router.post('/login',           login);
-router.get('/me',                getMe);
+router.get('/me',               protect, getMe);
 router.patch('/change-password', protect, changePassword);
 router.post('/create-admin',    protect, superAdminOnly, createAdmin);
 
