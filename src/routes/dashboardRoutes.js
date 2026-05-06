@@ -21,7 +21,7 @@ router.get('/', protect, async (req, res, next) => {
       TeamMember.countDocuments(),
       TeamMember.countDocuments({ isActive: true }),
       HallOfFame.countDocuments(),
-      Sponsor.countDocuments({ isActive: true }),
+      Sponsor.countDocuments(),
     ]);
 
     const recentEvents = await Event.find()
