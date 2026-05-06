@@ -23,7 +23,6 @@ const seed = async () => {
 
     console.log('✅ Superadmin created!');
     console.log('   Email:   ', process.env.ADMIN_EMAIL);
-    console.log('   Password:', process.env.ADMIN_PASSWORD);
     console.log('\n⚠️  Change this password after first login!');
     process.exit(0);
   } catch (err) {
