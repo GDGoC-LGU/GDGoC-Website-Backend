@@ -18,22 +18,22 @@ const router = Router();
 router.get('/', getPublicTeam);
 
 // ── Admin ───────────────────────────────────────────────
-// GET /api/admin/team
+// GET /api/team/admin
 router.get('/admin', protect, getAllTeamMembers);
 
-// PATCH /api/admin/team/reorder  (before /:id routes)
+// PATCH /api/team/admin/reorder  (before /:id routes)
 router.patch('/admin/reorder', protect, reorderTeam);
 
-// GET /api/admin/team/:id
+// GET /api/team/admin/:id
 router.get('/admin/:id', protect, getTeamMemberById);
 
-// POST /api/admin/team
+// POST /api/team/admin
 router.post('/admin', protect, uploadTeam.single('image'), handleMulterError, createTeamMember);
 
-// PUT /api/admin/team/:id
+// PUT /api/team/admin/:id
 router.put('/admin/:id', protect, uploadTeam.single('image'), handleMulterError, updateTeamMember);
 
-// DELETE /api/admin/team/:id
+// DELETE /api/team/admin/:id
 router.delete('/admin/:id', protect, deleteTeamMember);
 
 export default router;
